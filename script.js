@@ -14,7 +14,10 @@ function makebox() {
   $("#container").width(size*boxSize + "px");
   $(".box").width(boxSize + "");
   $(".box").height(boxSize + "px");
-};
+  $(".box").each( function(i) {
+    $(this).addClass('.box-' + (i+1));
+  });
+  };
 
 function makeNew() {
   $("#container").empty();

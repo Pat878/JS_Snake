@@ -1,0 +1,15 @@
+.box {
+  display: inline-block;
+}
+
+
+#container {
+  display: block;
+  border: 2px black solid;
+  border-radius: 5px;
+  font-size: 0;
+  margin: 10px auto;
+}
+.hover {
+  background-color: black;
+}

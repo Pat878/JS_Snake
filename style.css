@@ -1,5 +1,7 @@
 .box {
   display: inline-block;
+  border: 2px grey solid;
+
 }
 
 

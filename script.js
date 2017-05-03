@@ -1,6 +1,6 @@
 $(document).ready(function() {
   makebox();
-  makeNew();
+  //makeNew();
   addSnake();
   moveSnake();
 });
@@ -34,10 +34,10 @@ function moveSnake() {
   })
 };
 
-function makeNew() {
-  $("#container").empty();
-  makebox();
-};
+//function makeNew() {
+  //$("#container").empty();
+  //makebox();
+//};
 
 /* $(document).on("mouseenter", ".box", function() {
   $(this).addClass("hover");

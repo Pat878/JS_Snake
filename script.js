@@ -4,6 +4,8 @@ var boxSize = 20;
 $(document).ready(function() {
   makebox();
   makeNew();
+  addSnake();
+//  moveSnake();
 });
 
 
@@ -15,9 +17,19 @@ function makebox() {
   $(".box").width(boxSize + "");
   $(".box").height(boxSize + "px");
   $(".box").each( function(i) {
-    $(this).addClass('.box-' + (i+1));
+    $(this).addClass('box-' + (i+1));
   });
   };
+
+function addSnake () {
+  $(".box-261").addClass("hover");
+    $(".box-262").addClass("hover");
+        $(".box-263").addClass("hover");
+};
+
+function moveSnake() {
+  
+};
 
 function makeNew() {
   $("#container").empty();

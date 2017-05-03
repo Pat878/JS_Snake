@@ -5,7 +5,7 @@ $(document).ready(function() {
   makebox();
   makeNew();
   addSnake();
-//  moveSnake();
+  moveSnake();
 });
 
 
@@ -28,7 +28,11 @@ function addSnake () {
 };
 
 function moveSnake() {
-  
+  $(document).keydown(function(e) {
+    if (e.keyCode == '39'){
+      console.log("39")
+    }
+  })
 };
 
 function makeNew() {

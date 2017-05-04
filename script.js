@@ -16,23 +16,32 @@ function makebox() {
   $(".box").width(boxSize + "");
   $(".box").height(boxSize + "px");
   $(".box").each( function(i) {
-    $(this).addClass('box-' + (i+1));
+    $(this).attr('position', (i+1));
   });
   };
 
+  mick = function() {$('*[position="' + 23 + '"]').addClass("hover");};
 function addSnake () {
-  $(".box-261").addClass("hover");
+  var ves = 22;
+  $('*[position="' + ves + '"]').addClass("hover");
     $(".box-262").addClass("hover");
         $(".box-263").addClass("hover");
+
+        moveSnake = function() {
+          $(document).keydown(function(e) {
+            if (e.keyCode == '39'){
+              console.log("yes")
+                mick();
+            }
+
+          })
+
+            }
+
+
+
 };
 
-function moveSnake() {
-  $(document).keydown(function(e) {
-    if (e.keyCode == '39'){
-      console.log("39")
-    }
-  })
-};
 
 //function makeNew() {
   //$("#container").empty();

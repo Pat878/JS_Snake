@@ -21,7 +21,9 @@ function makebox() {
   };
 
 function addSnake () {
-  mick = function() {$('*[position="' + ves + '"]').addClass("hover");};
+  moveRight = function() {$('*[position="' + ves + '"]').addClass("hover");
+$('*[position="' + (ves - 1) + '"]').removeClass("hover");
+};
   var ves = 22;
   $('*[position="' + ves + '"]').addClass("hover");
     $(".box-262").addClass("hover");
@@ -32,7 +34,12 @@ function addSnake () {
             if (e.keyCode == '39'){
               console.log("yes")
                 ves += 1
-                mick();
+                moveRight();
+            }
+            else if (e.keyCode == '37') {
+              console.log("yes")
+                ves -= 1
+                moveRight();
             }
 
           })

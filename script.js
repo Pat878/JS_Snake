@@ -20,8 +20,8 @@ function makebox() {
   });
   };
 
-  mick = function() {$('*[position="' + 23 + '"]').addClass("hover");};
 function addSnake () {
+  mick = function() {$('*[position="' + ves + '"]').addClass("hover");};
   var ves = 22;
   $('*[position="' + ves + '"]').addClass("hover");
     $(".box-262").addClass("hover");
@@ -31,6 +31,7 @@ function addSnake () {
           $(document).keydown(function(e) {
             if (e.keyCode == '39'){
               console.log("yes")
+                ves += 1
                 mick();
             }
 

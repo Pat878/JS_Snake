@@ -21,9 +21,15 @@ function makebox() {
   };
 
 function addSnake () {
+
   moveRight = function() {$('*[position="' + ves + '"]').addClass("hover");
 $('*[position="' + (ves - 1) + '"]').removeClass("hover");
 };
+
+moveLeft = function() {$('*[position="' + ves + '"]').addClass("hover");
+$('*[position="' + (ves + 1) + '"]').removeClass("hover");
+};
+
   var ves = 22;
   $('*[position="' + ves + '"]').addClass("hover");
     $(".box-262").addClass("hover");
@@ -39,7 +45,7 @@ $('*[position="' + (ves - 1) + '"]').removeClass("hover");
             else if (e.keyCode == '37') {
               console.log("yes")
                 ves -= 1
-                moveRight();
+                moveLeft();
             }
 
           })

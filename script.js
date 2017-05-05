@@ -22,7 +22,7 @@ function makebox() {
 
 function addSnake () {
 
-  moveRight = function() {$('*[position="' + ves + '"]').addClass("hover");
+moveRight = function() {$('*[position="' + ves + '"]').addClass("hover");
 $('*[position="' + (ves - 1) + '"]').removeClass("hover");
 };
 
@@ -34,28 +34,42 @@ moveDown = function() {$('*[position="' + ves + '"]').addClass("hover");
 $('*[position="' + (ves - 25) + '"]').removeClass("hover");
 };
 
-  var ves = 22;
-  $('*[position="' + ves + '"]').addClass("hover");
-    $(".box-262").addClass("hover");
-        $(".box-263").addClass("hover");
+moveUp = function() {$('*[position="' + ves + '"]').addClass("hover");
+$('*[position="' + (ves + 25) + '"]').removeClass("hover");
+};
 
-        moveSnake = function() {
-          $(document).keydown(function(e) {
-            if (e.keyCode == '39'){
-              console.log("yes")
+var ves = 22;
+$('*[position="' + ves + '"]').addClass("hover");
+$(".box-262").addClass("hover");
+$(".box-263").addClass("hover");
+
+  moveSnake = function() {
+  $(document).keydown(function(e) {
+
+  if (e.keyCode == '39'){
+            console.log("yes")
                 ves += 1
                 moveRight();
             }
+
             else if (e.keyCode == '37') {
               console.log("yes")
                 ves -= 1
                 moveLeft();
             }
+
             else if (e.keyCode == '40') {
               console.log("yes")
                 ves += 25
                 moveDown();
             }
+
+            else if (e.keyCode == '38') {
+              console.log("yes")
+                ves -= 25
+                moveUp();
+            }
+
           })
 
             }

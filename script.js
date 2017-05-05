@@ -20,6 +20,10 @@ function makebox() {
   });
   };
 
+function addBorder() {
+  //find all of the border divs and add a border class to them
+}
+
 function addSnake () {
 
 moveRight = function() {$('*[position="' + ves + '"]').addClass("hover");

@@ -30,6 +30,10 @@ moveLeft = function() {$('*[position="' + ves + '"]').addClass("hover");
 $('*[position="' + (ves + 1) + '"]').removeClass("hover");
 };
 
+moveDown = function() {$('*[position="' + ves + '"]').addClass("hover");
+$('*[position="' + (ves - 25) + '"]').removeClass("hover");
+};
+
   var ves = 22;
   $('*[position="' + ves + '"]').addClass("hover");
     $(".box-262").addClass("hover");
@@ -47,7 +51,11 @@ $('*[position="' + (ves + 1) + '"]').removeClass("hover");
                 ves -= 1
                 moveLeft();
             }
-
+            else if (e.keyCode == '40') {
+              console.log("yes")
+                ves += 25
+                moveDown();
+            }
           })
 
             }

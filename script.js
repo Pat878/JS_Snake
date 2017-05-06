@@ -2,7 +2,7 @@ $(document).ready(function() {
   makebox();
   //makeNew();
   addSnake();
-  moveSnake();
+  movaluenake();
   addBorder();
 });
 
@@ -41,68 +41,51 @@ function addBorder() {
 
 function addSnake () {
 
-moveRight = function() {$('*[data="' + ves + '"]').addClass("hover");
-$('*[data="' + (ves - 1) + '"]').removeClass("hover");
+moveRight = function() {$('*[data="' + value + '"]').addClass("hover");
+$('*[data="' + (value - 1) + '"]').removeClass("hover");
 };
 
-moveLeft = function() {$('*[data="' + ves + '"]').addClass("hover");
-$('*[data="' + (ves + 1) + '"]').removeClass("hover");
+moveLeft = function() {$('*[data="' + value + '"]').addClass("hover");
+$('*[data="' + (value + 1) + '"]').removeClass("hover");
 };
 
-moveDown = function() {$('*[data="' + ves + '"]').addClass("hover");
-$('*[data="' + (ves - 25) + '"]').removeClass("hover");
+moveDown = function() {$('*[data="' + value + '"]').addClass("hover");
+$('*[data="' + (value - 25) + '"]').removeClass("hover");
 };
 
-moveUp = function() {$('*[data="' + ves + '"]').addClass("hover");
-$('*[data="' + (ves + 25) + '"]').removeClass("hover");
+moveUp = function() {$('*[data="' + value + '"]').addClass("hover");
+$('*[data="' + (value + 25) + '"]').removeClass("hover");
 };
 
-var ves = 22;
-$('*[data="' + ves + '"]').addClass("hover");
+var value = 22;
+$('*[data="' + value + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");
 
-  moveSnake = function() {
+  movaluenake = function() {
   $(document).keydown(function(e) {
 
   if (e.keyCode == '39'){
-            console.log("yes")
-                ves += 1
+                value += 1
                 moveRight();
             }
 
             else if (e.keyCode == '37') {
-              console.log("yes")
-                ves -= 1
+                value -= 1
                 moveLeft();
             }
 
             else if (e.keyCode == '40') {
-              console.log("yes")
-                ves += 25
+                value += 25
                 moveDown();
             }
 
             else if (e.keyCode == '38') {
-              console.log("yes")
-                ves -= 25
+                value -= 25
                 moveUp();
             }
 
           })
 
             }
-
-
-
 };
-
-
-//function makeNew() {
-  //$("#container").empty();
-  //makebox();
-//};
-
-/* $(document).on("mouseenter", ".box", function() {
-  $(this).addClass("hover");
-}); */

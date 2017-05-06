@@ -107,4 +107,7 @@ $(".box-263").addClass("hover");
           })
 
             }
+killSnake = function(){
+  //if snake hits border it dies
+}
 };

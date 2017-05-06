@@ -3,6 +3,7 @@ $(document).ready(function() {
   //makeNew();
   addSnake();
   moveSnake();
+  addBorder();
 });
 
 
@@ -16,34 +17,38 @@ function makebox() {
   $(".box").width(boxSize + "");
   $(".box").height(boxSize + "px");
   $(".box").each( function(i) {
-    $(this).attr('position', (i+1));
+    $(this).attr('data', (i+1));
   });
   };
 
 function addBorder() {
   //find all of the border divs and add a border class to them
+  $(".box").each(function(){
+    if ($(this).attr('data') % 25 == 0 || $(this).attr('data') % 25 == 1) {
+    $(this).addClass("moose") }
+  })
 }
 
 function addSnake () {
 
-moveRight = function() {$('*[position="' + ves + '"]').addClass("hover");
-$('*[position="' + (ves - 1) + '"]').removeClass("hover");
+moveRight = function() {$('*[data="' + ves + '"]').addClass("hover");
+$('*[data="' + (ves - 1) + '"]').removeClass("hover");
 };
 
-moveLeft = function() {$('*[position="' + ves + '"]').addClass("hover");
-$('*[position="' + (ves + 1) + '"]').removeClass("hover");
+moveLeft = function() {$('*[data="' + ves + '"]').addClass("hover");
+$('*[data="' + (ves + 1) + '"]').removeClass("hover");
 };
 
-moveDown = function() {$('*[position="' + ves + '"]').addClass("hover");
-$('*[position="' + (ves - 25) + '"]').removeClass("hover");
+moveDown = function() {$('*[data="' + ves + '"]').addClass("hover");
+$('*[data="' + (ves - 25) + '"]').removeClass("hover");
 };
 
-moveUp = function() {$('*[position="' + ves + '"]').addClass("hover");
-$('*[position="' + (ves + 25) + '"]').removeClass("hover");
+moveUp = function() {$('*[data="' + ves + '"]').addClass("hover");
+$('*[data="' + (ves + 25) + '"]').removeClass("hover");
 };
 
 var ves = 22;
-$('*[position="' + ves + '"]').addClass("hover");
+$('*[data="' + ves + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");
 

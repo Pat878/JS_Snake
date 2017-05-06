@@ -62,27 +62,46 @@ $('*[data="' + value + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");
 
-  movaluenake = function() {
+  moveSnake = function() {
   $(document).keydown(function(e) {
 
   if (e.keyCode == '39'){
                 value += 1
                 moveRight();
+                right = true
+                left = false
+                up = false
+                down = false;
             }
 
             else if (e.keyCode == '37') {
                 value -= 1
                 moveLeft();
+
+                right = false
+                left = true
+                up = false
+                down = false;
             }
 
             else if (e.keyCode == '40') {
                 value += 25
                 moveDown();
+
+                right = false
+                left = false
+                up = false
+                down = true;
             }
 
             else if (e.keyCode == '38') {
                 value -= 25
                 moveUp();
+
+                right = false
+                left = false
+                up = true
+                down = false;
             }
 
           })

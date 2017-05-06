@@ -24,9 +24,18 @@ function makebox() {
 function addBorder() {
   //find all of the border divs and add a border class to them
   $(".box").each(function(){
-    if ($(this).attr('data') % 25 == 0 || $(this).attr('data') % 25 == 1 || $(this).attr('data') < 25 ||
-  $(this).attr('data') >= 877 ) {
-    $(this).addClass("border") }
+
+    if ($(this).attr('data') % 25 == 0) {
+      $(this).addClass("right-border")
+    }
+    else if ($(this).attr('data') % 25 == 1) {
+      $(this).addClass("left-border")
+    }
+    else if ($(this).attr('data') < 25) {
+      $(this).addClass("top-border")
+    }
+    else if ($(this).attr('data') >= 877 ) {
+      $(this).addClass("bottom-border") }
       })
 }
 

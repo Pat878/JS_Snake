@@ -25,7 +25,7 @@ function addBorder() {
   //find all of the border divs and add a border class to them
   $(".box").each(function(){
     if ($(this).attr('data') % 25 == 0 || $(this).attr('data') % 25 == 1) {
-    $(this).addClass("moose") }
+    $(this).addClass("border") }
   })
 }
 

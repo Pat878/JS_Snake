@@ -40,7 +40,7 @@ function addBorder() {
 }
 
 function addSnake () {
-
+var right, left, up, down;
 moveRight = function() {$('*[data="' + value + '"]').addClass("hover");
 $('*[data="' + (value - 1) + '"]').removeClass("hover");
 };

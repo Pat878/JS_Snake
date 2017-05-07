@@ -105,6 +105,7 @@ $(".box-263").addClass("hover");
             }
 
           })
+
           killSnake = function() {
             if ($(".left-border").hasClass("hover") == true && right == true ) {
                  alert("You lose!")}
@@ -115,6 +116,8 @@ $(".box-263").addClass("hover");
                            else if ($("div").hasClass("hover") == false && up == true ) {
                                 alert("You lose!")}
           }
-
 }
+
+addToSnake = function(){};
+
 };

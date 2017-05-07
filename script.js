@@ -118,6 +118,8 @@ $(".box-263").addClass("hover");
           }
 }
 
+addFood = function(){};
+
 addToSnake = function(){};
 
 };

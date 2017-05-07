@@ -3,6 +3,7 @@ $(document).ready(function() {
   addSnake();
   moveSnake();
   addBorder();
+  addFood();
   killSnake();
 });
 
@@ -118,7 +119,10 @@ $(".box-263").addClass("hover");
           }
 }
 
-addFood = function(){};
+addFood = function(){
+  var random = Math.floor(Math.random() * (900 - 1 + 1)) + 1;
+  $('*[data="' + random + '"]').addClass("food")
+};
 
 addToSnake = function(){};
 

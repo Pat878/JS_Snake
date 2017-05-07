@@ -2,8 +2,9 @@ $(document).ready(function() {
   makebox();
   //makeNew();
   addSnake();
-  movaluenake();
+  moveSnake();
   addBorder();
+  killSnake();
 });
 
 
@@ -40,7 +41,7 @@ function addBorder() {
 }
 
 function addSnake () {
-var right, left, up, down;
+
 moveRight = function() {$('*[data="' + value + '"]').addClass("hover");
 $('*[data="' + (value - 1) + '"]').removeClass("hover");
 };
@@ -58,6 +59,7 @@ $('*[data="' + (value + 25) + '"]').removeClass("hover");
 };
 
 var value = 22;
+var right;
 $('*[data="' + value + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");
@@ -72,16 +74,18 @@ $(".box-263").addClass("hover");
                 left = false
                 up = false
                 down = false;
+                console.log(right)
+                killSnake();
             }
 
             else if (e.keyCode == '37') {
                 value -= 1
                 moveLeft();
-
                 right = false
                 left = true
                 up = false
                 down = false;
+                killSnake();
             }
 
             else if (e.keyCode == '40') {
@@ -92,22 +96,30 @@ $(".box-263").addClass("hover");
                 left = false
                 up = false
                 down = true;
+                killSnake();
             }
 
             else if (e.keyCode == '38') {
                 value -= 25
                 moveUp();
-
                 right = false
                 left = false
                 up = true
                 down = false;
+                killSnake();
             }
 
           })
+          killSnake = function() {
+            if ($(".left-border").hasClass("hover") == true && right == true ) {
+                 alert("You lose!")}
+                 else if ($(".right-border").hasClass("hover") == true && left == true ) {
+                      alert("You lose!")}
+                      else if ($("div").hasClass("hover") == false && (down == true || left == true) ) {
+                           alert("You lose!")}
+                           else if ($("div").hasClass("hover") == false && up == true ) {
+                                alert("You lose!")}
+          }
 
-            }
-killSnake = function(){
-  //if snake hits border it dies
 }
 };

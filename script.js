@@ -1,3 +1,6 @@
+//In the moveSnake function I had to use code from the below link in order to ignore multiple keydown events.
+//https://stackoverflow.com/questions/9098901/how-to-disable-repetitive-keydown-in-jquery
+
 $(document).ready(function() {
   makebox();
   addSnake();
@@ -41,18 +44,22 @@ function addBorder() {
 
 function addSnake () {
 
-var time;
+var time, leftTime;
 
 moveRight = function() {
+  down = {}
   right = true;
   time = setInterval(function(){ value += 1
   $('*[data="' + value + '"]').addClass("hover");
-  $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 1000);
+  $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 250);
   killSnake();
 };
 
-moveLeft = function() {$('*[data="' + value + '"]').addClass("hover");
-$('*[data="' + (value + 1) + '"]').removeClass("hover");
+moveLeft = function() {
+  down = {}
+  leftTime = setInterval(function(){ value -= 1
+  $('*[data="' + value + '"]').addClass("hover");
+  $('*[data="' + (value + 1) + '"]').removeClass("hover"); }, 250)
 };
 
 moveDown = function() {$('*[data="' + value + '"]').addClass("hover");
@@ -68,51 +75,29 @@ $('*[data="' + value + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");
 
+var down = {};
+
   moveSnake = function() {
-  $(document).keydown(function(e) {
 
-  if (e.keyCode == '39'){
-                //value += 1
-                moveRight();
-                right = true
-                left = false
-                up = false
-                down = false;
-                killSnake();
-            }
+    $(document).keydown(function(event){
+   var keycode = (event.keyCode ? event.keyCode : event.which);
+   if(keycode == '39'){
+        if (down['39'] == null) { // first press
+          window.clearInterval(leftTime);
+          moveRight();
+          down['39'] = true;
+        }
+   }
 
-            else if (e.keyCode == '37') {
-              window.clearInterval(time);
-                value -= 1
-                moveLeft();
-                right = false
-                left = true
-                up = false
-                down = false;
-                killSnake();
-            }
+  else if(keycode == '37'){
+        if (down['37'] == null) {
+          window.clearInterval(time);
+          moveLeft();
+          down['37'] = true;
+                    }
+   }
 
-            else if (e.keyCode == '40') {
-                value += 25
-                moveDown();
-                right = false
-                left = false
-                up = false
-                down = true;
-                killSnake();
-            }
-
-            else if (e.keyCode == '38') {
-                value -= 25
-                moveUp();
-                right = false
-                left = false
-                up = true
-                down = false;
-                killSnake();
-            }
-
-          })
+ });
 
           killSnake = function() {
             if ($(".left-border").hasClass("hover") == true && right == true ) {

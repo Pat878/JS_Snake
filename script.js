@@ -1,12 +1,10 @@
 $(document).ready(function() {
   makebox();
-  //makeNew();
   addSnake();
   moveSnake();
   addBorder();
   killSnake();
 });
-
 
 function makebox() {
   var size = 30;
@@ -59,7 +57,6 @@ $('*[data="' + (value + 25) + '"]').removeClass("hover");
 };
 
 var value = 22;
-var right;
 $('*[data="' + value + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");
@@ -74,7 +71,6 @@ $(".box-263").addClass("hover");
                 left = false
                 up = false
                 down = false;
-                console.log(right)
                 killSnake();
             }
 
@@ -91,7 +87,6 @@ $(".box-263").addClass("hover");
             else if (e.keyCode == '40') {
                 value += 25
                 moveDown();
-
                 right = false
                 left = false
                 up = false

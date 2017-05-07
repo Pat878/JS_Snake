@@ -5,7 +5,7 @@ $(document).ready(function() {
   addBorder();
   addFood();
   killSnake();
-});
+  });
 
 function makebox() {
   var size = 30;
@@ -41,8 +41,14 @@ function addBorder() {
 
 function addSnake () {
 
-moveRight = function() {$('*[data="' + value + '"]').addClass("hover");
-$('*[data="' + (value - 1) + '"]').removeClass("hover");
+var time;
+
+moveRight = function() {
+  right = true;
+  time = setInterval(function(){ value += 1
+  $('*[data="' + value + '"]').addClass("hover");
+  $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 1000);
+  killSnake();
 };
 
 moveLeft = function() {$('*[data="' + value + '"]').addClass("hover");
@@ -66,7 +72,7 @@ $(".box-263").addClass("hover");
   $(document).keydown(function(e) {
 
   if (e.keyCode == '39'){
-                value += 1
+                //value += 1
                 moveRight();
                 right = true
                 left = false
@@ -76,6 +82,7 @@ $(".box-263").addClass("hover");
             }
 
             else if (e.keyCode == '37') {
+              window.clearInterval(time);
                 value -= 1
                 moveLeft();
                 right = false

@@ -44,12 +44,11 @@ function addBorder() {
 
 function addSnake () {
 
-var time, leftTime;
+var rightTime, leftTime, downTime;
 
 moveRight = function() {
   down = {}
-  right = true;
-  time = setInterval(function(){ value += 1
+  rightTime = setInterval(function(){ value += 1
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 250);
   killSnake();
@@ -62,8 +61,11 @@ moveLeft = function() {
   $('*[data="' + (value + 1) + '"]').removeClass("hover"); }, 250)
 };
 
-moveDown = function() {$('*[data="' + value + '"]').addClass("hover");
-$('*[data="' + (value - 25) + '"]').removeClass("hover");
+moveDown = function() {
+down = {}
+downTime = setInterval(function(){ value += 25
+  $('*[data="' + value + '"]').addClass("hover");
+$('*[data="' + (value - 25) + '"]').removeClass("hover");}, 250)
 };
 
 moveUp = function() {$('*[data="' + value + '"]').addClass("hover");
@@ -82,8 +84,9 @@ var down = {};
     $(document).keydown(function(event){
    var keycode = (event.keyCode ? event.keyCode : event.which);
    if(keycode == '39'){
-        if (down['39'] == null) { // first press
+        if (down['39'] == null) {
           window.clearInterval(leftTime);
+          window.clearInterval(downTime);
           moveRight();
           down['39'] = true;
         }
@@ -91,11 +94,21 @@ var down = {};
 
   else if(keycode == '37'){
         if (down['37'] == null) {
-          window.clearInterval(time);
+          window.clearInterval(rightTime);
+          window.clearInterval(downTime);
           moveLeft();
           down['37'] = true;
                     }
    }
+
+   else if(keycode == '40'){
+         if (down['40'] == null) {
+           window.clearInterval(leftTime);
+           window.clearInterval(rightTime);
+           moveDown();
+           down['40'] = true;
+                     }
+    }
 
  });
 

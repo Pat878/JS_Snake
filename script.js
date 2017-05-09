@@ -44,13 +44,15 @@ function addBorder() {
 
 function addSnake () {
 
-var rightTime, leftTime, downTime;
+var rightTime, leftTime, downTime, upTime, right;
 
 moveRight = function() {
   down = {}
   rightTime = setInterval(function(){ value += 1
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 250);
+  right = true;
+  console.log(right)
   killSnake();
 };
 
@@ -59,17 +61,23 @@ moveLeft = function() {
   leftTime = setInterval(function(){ value -= 1
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value + 1) + '"]').removeClass("hover"); }, 250)
+  killSnake();
 };
 
 moveDown = function() {
-down = {}
-downTime = setInterval(function(){ value += 25
+  down = {}
+  downTime = setInterval(function(){ value += 25
   $('*[data="' + value + '"]').addClass("hover");
-$('*[data="' + (value - 25) + '"]').removeClass("hover");}, 250)
+  $('*[data="' + (value - 25) + '"]').removeClass("hover");}, 250)
+  killSnake();
 };
 
-moveUp = function() {$('*[data="' + value + '"]').addClass("hover");
-$('*[data="' + (value + 25) + '"]').removeClass("hover");
+moveUp = function() {
+  down = {}
+  upTime = setInterval(function(){ value -= 25
+  $('*[data="' + value + '"]').addClass("hover");
+  $('*[data="' + (value + 25) + '"]').removeClass("hover");}, 250)
+  killSnake();
 };
 
 var value = 22;
@@ -87,6 +95,7 @@ var down = {};
         if (down['39'] == null) {
           window.clearInterval(leftTime);
           window.clearInterval(downTime);
+          window.clearInterval(upTime);
           moveRight();
           down['39'] = true;
         }
@@ -96,6 +105,7 @@ var down = {};
         if (down['37'] == null) {
           window.clearInterval(rightTime);
           window.clearInterval(downTime);
+          window.clearInterval(upTime);
           moveLeft();
           down['37'] = true;
                     }
@@ -105,10 +115,21 @@ var down = {};
          if (down['40'] == null) {
            window.clearInterval(leftTime);
            window.clearInterval(rightTime);
+           window.clearInterval(upTime);
            moveDown();
            down['40'] = true;
                      }
     }
+
+    else if(keycode == '38'){
+          if (down['38'] == null) {
+            window.clearInterval(leftTime);
+            window.clearInterval(rightTime);
+            window.clearInterval(downTime);
+            moveUp();
+            down['38'] = true;
+                      }
+     }
 
  });
 

@@ -44,15 +44,14 @@ function addBorder() {
 
 function addSnake () {
 
-var rightTime, leftTime, downTime, upTime, right;
+var rightTime, leftTime, downTime, upTime;
+
 
 moveRight = function() {
   down = {}
   rightTime = setInterval(function(){ value += 1
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 250);
-  right = true;
-  console.log(right)
   killSnake();
 };
 
@@ -90,7 +89,9 @@ var down = {};
   moveSnake = function() {
 
     $(document).keydown(function(event){
+
    var keycode = (event.keyCode ? event.keyCode : event.which);
+
    if(keycode == '39'){
         if (down['39'] == null) {
           window.clearInterval(leftTime);
@@ -98,7 +99,7 @@ var down = {};
           window.clearInterval(upTime);
           moveRight();
           down['39'] = true;
-        }
+                             }
    }
 
   else if(keycode == '37'){
@@ -133,15 +134,9 @@ var down = {};
 
  });
 
-          killSnake = function() {
-            if ($(".left-border").hasClass("hover") == true && right == true ) {
-                 alert("You lose!")}
-                 else if ($(".right-border").hasClass("hover") == true && left == true ) {
-                      alert("You lose!")}
-                      else if ($("div").hasClass("hover") == false && (down == true || left == true) ) {
-                           alert("You lose!")}
-                           else if ($("div").hasClass("hover") == false && up == true ) {
-                                alert("You lose!")}
+  killSnake = function() {
+        if ($(".right-border").hasClass("hover") == true && right == true) {
+               alert("You lose!")}
           }
 }
 

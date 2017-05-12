@@ -44,7 +44,7 @@ function addBorder() {
 
 function addSnake () {
 
-var rightTime, leftTime, downTime, upTime;
+var rightTime, leftTime, downTime, upTime, right;
 
 
 moveRight = function() {
@@ -52,15 +52,13 @@ moveRight = function() {
   rightTime = setInterval(function(){ value += 1
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 250);
-  killSnake();
-};
+  };
 
 moveLeft = function() {
   down = {}
   leftTime = setInterval(function(){ value -= 1
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value + 1) + '"]').removeClass("hover"); }, 250)
-  killSnake();
 };
 
 moveDown = function() {
@@ -68,7 +66,6 @@ moveDown = function() {
   downTime = setInterval(function(){ value += 25
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value - 25) + '"]').removeClass("hover");}, 250)
-  killSnake();
 };
 
 moveUp = function() {
@@ -76,7 +73,6 @@ moveUp = function() {
   upTime = setInterval(function(){ value -= 25
   $('*[data="' + value + '"]').addClass("hover");
   $('*[data="' + (value + 25) + '"]').removeClass("hover");}, 250)
-  killSnake();
 };
 
 var value = 22;
@@ -135,8 +131,18 @@ var down = {};
  });
 
   killSnake = function() {
-        if ($(".right-border").hasClass("hover") == true && right == true) {
-               alert("You lose!")}
+    var config = { attributes: true, childList: true, characterData: true };
+
+    $(".right-border, .left-border, .top-border, .bottom-border").each(function () {
+      var target = this;
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          console.log("Game over!")
+        });
+      });
+
+    observer.observe(target, config);
+  });
           }
 }
 

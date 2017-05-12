@@ -75,7 +75,7 @@ moveUp = function() {
   $('*[data="' + (value + 25) + '"]').removeClass("hover");}, 250)
 };
 
-var value = 22;
+var value = 42;
 $('*[data="' + value + '"]').addClass("hover");
 $(".box-262").addClass("hover");
 $(".box-263").addClass("hover");

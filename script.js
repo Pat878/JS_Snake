@@ -11,8 +11,8 @@ $(document).ready(function() {
   });
 
 function makebox() {
-  var size = 30;
-  var boxSize = 20;
+  var size = 30;  //24
+  var boxSize = 20; //12
   for (i=1;i<=size*size;i++) {
     $("#container").append("<div class='box'></div>");
   };

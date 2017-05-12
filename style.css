@@ -17,5 +17,11 @@
 }
 
 .food {
-  background-color: red;
+  background-color: blue;
+}
+
+.right-border, .left-border, .top-border, .bottom-border {
+  background: red;
+  border: 2px red solid;
+
 }

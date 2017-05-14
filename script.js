@@ -8,6 +8,7 @@ $(document).ready(function() {
   addBorder();
   addFood();
   killSnake();
+  addToSnake();
   });
 
 function makebox() {
@@ -130,6 +131,37 @@ var down = {};
 
  });
 
+
+ addToSnake = function(){
+   var count = 0;
+
+     var config = { attributes: true, childList: true, characterData: true };
+
+     $(".box, .food").each(function () {
+       var target = this;
+       var observer = new MutationObserver(function(mutations) {
+         mutations.forEach(function(mutation) {
+          if ($(".food").hasClass("hover") == true){
+            $(".box").removeClass("food")
+            addFood();
+          }
+           //addFood();
+           console.log(count)
+                    });
+       });
+
+     observer.observe(target, config);
+
+   });
+
+
+
+           }
+
+
+
+
+
   killSnake = function() {
     var config = { attributes: true, childList: true, characterData: true };
 
@@ -149,8 +181,6 @@ var down = {};
 addFood = function(){
   var random = Math.floor(Math.random() * (900 - 1 + 1)) + 1;
   $('*[data="' + random + '"]').addClass("food")
-};
-
-addToSnake = function(){};
-
+  };
+//addToSnake();
 };

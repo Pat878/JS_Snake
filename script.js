@@ -50,16 +50,19 @@ var rightTime, leftTime, downTime, upTime, right;
 
 moveRight = function() {
   down = {}
-  rightTime = setInterval(function(){ value += 1
-  $('*[data="' + value + '"]').addClass("hover");
-  $('*[data="' + (value - 1) + '"]').removeClass("hover"); }, 250);
+  rightTime = setInterval(function(){
+  for (var key in value){
+    if (value.hasOwnProperty(key)) {
+      value[key]++
+   $('*[data="' + value[key] + '"]').addClass("hover");
+   $('*[data="' + (value[key] - 1) + '"]').removeClass("hover");}} }, 250);
   };
 
 moveLeft = function() {
   down = {}
-  leftTime = setInterval(function(){ value -= 1
-  $('*[data="' + value + '"]').addClass("hover");
-  $('*[data="' + (value + 1) + '"]').removeClass("hover"); }, 250)
+  leftTime = setInterval(function(){ value[0] -= 1
+  $('*[data="' + value[0] + '"]').addClass("hover");
+  $('*[data="' + (value[0] + 1) + '"]').removeClass("hover"); }, 250)
 };
 
 moveDown = function() {
@@ -76,10 +79,18 @@ moveUp = function() {
   $('*[data="' + (value + 25) + '"]').removeClass("hover");}, 250)
 };
 
-var value = 42;
-$('*[data="' + value + '"]').addClass("hover");
-$(".box-262").addClass("hover");
-$(".box-263").addClass("hover");
+var person = [$('*[data="' + value + '"]').addClass("hover")]
+
+
+addTail = function(){
+  var moosh =  $('*[data="' + (value-1) + '"]').addClass("hover");
+}
+var value = {key1: 42};
+console.log(value.key1)
+
+  $('*[data="' + value.key1 + '"]').addClass("hover");
+  //$('*[data="' + value.key2 + '"]').addClass("hover");
+
 
 var down = {};
 
@@ -144,23 +155,16 @@ var down = {};
           if ($(".food").hasClass("hover") == true){
             $(".box").removeClass("food")
             addFood();
-          }
-           //addFood();
-           console.log(count)
+            addTail();
+                      }
                     });
-       });
+                  });
 
-     observer.observe(target, config);
+      observer.observe(target, config);
 
    });
 
-
-
            }
-
-
-
-
 
   killSnake = function() {
     var config = { attributes: true, childList: true, characterData: true };
@@ -181,6 +185,6 @@ var down = {};
 addFood = function(){
   var random = Math.floor(Math.random() * (900 - 1 + 1)) + 1;
   $('*[data="' + random + '"]').addClass("food")
-  };
-//addToSnake();
+};
+
 };

@@ -45,54 +45,84 @@ function addBorder() {
 
 function addSnake () {
 
-var rightTime, leftTime, downTime, upTime, right;
+var rightTime, leftTime, downTime, upTime;
 
 
 moveRight = function() {
   down = {}
   rightTime = setInterval(function(){
-  for (var key in value){
-    if (value.hasOwnProperty(key)) {
-      value[key]++
-   $('*[data="' + value[key] + '"]').addClass("hover");
-   $('*[data="' + (value[key] - 1) + '"]').removeClass("hover");}} }, 250);
-  };
+  for (var i=0;i<snake.length;i++) {
+    snake[i]++
+$('*[data="' + snake[i] + '"]').addClass("hover")
+$('*[data="' + (snake[snake.length-1]-snake.length) + '"]').removeClass("hover");
+
+} }, 150)
+
+};
 
 moveLeft = function() {
   down = {}
-  leftTime = setInterval(function(){ value[0] -= 1
-  $('*[data="' + value[0] + '"]').addClass("hover");
-  $('*[data="' + (value[0] + 1) + '"]').removeClass("hover"); }, 250)
+  leftTime = setInterval(function(){ //snake -= 1
+    for (var i = 0; i <snake.length;i++){
+        snake[i] -= 1
+  $('*[data="' + snake[i] + '"]').addClass("hover");
+  $('*[data="' + (snake[snake.length-1]+snake.length ) + '"]').removeClass("hover");
+
+} }, 150)
+
 };
 
 moveDown = function() {
   down = {}
-  downTime = setInterval(function(){ value += 25
-  $('*[data="' + value + '"]').addClass("hover");
-  $('*[data="' + (value - 25) + '"]').removeClass("hover");}, 250)
+  downTime = setInterval(function(){ //snake += 25
+    for (var i = 0; i <snake.length;i++){
+        snake[i] += 25
+  $('*[data="' + snake[i] + '"]').addClass("hover");
+  $('*[data="' + (snake[snake.length-1] - 25 * snake.length) + '"]').removeClass("hover");
+
+
+} }, 150)
+
 };
 
 moveUp = function() {
   down = {}
-  upTime = setInterval(function(){ value -= 25
-  $('*[data="' + value + '"]').addClass("hover");
-  $('*[data="' + (value + 25) + '"]').removeClass("hover");}, 250)
+  upTime = setInterval(function(){ //snake -= 25
+for (var i = 0; i <snake.length;i++){
+        snake[i] -= 25
+  $('*[data="' + snake[i] + '"]').addClass("hover");
+  $('*[data="' + (snake[snake.length-1] + 25 * snake.length) + '"]').removeClass("hover");
+} }, 150)
+
 };
 
-var person = [$('*[data="' + value + '"]').addClass("hover")]
-
-
 addTail = function(){
-  var moosh =  $('*[data="' + (value-1) + '"]').addClass("hover");
+  snake.splice(0,-1)
+      snake.unshift(snake[0])
 }
-var value = {key1: 42};
-console.log(value.key1)
 
-  $('*[data="' + value.key1 + '"]').addClass("hover");
-  //$('*[data="' + value.key2 + '"]').addClass("hover");
+var snake = [42]
 
+$('*[data="' + snake[0] + '"]').addClass("hover");
 
 var down = {};
+
+removeExtra = function(){
+
+var array = [];
+
+  $(".hover").each(function() {
+      array.unshift($(this).attr("data"));
+  });
+
+var len = array.length
+var len2 = snake.length
+var combo = len-len2
+
+for (var i=0;i<len;i++){
+    $('*[data="' + array[i] + '"]').removeClass("hover");
+
+}}
 
   moveSnake = function() {
 
@@ -106,6 +136,7 @@ var down = {};
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveRight();
+//          removeExtra();
           down['39'] = true;
                              }
    }
@@ -116,6 +147,7 @@ var down = {};
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveLeft();
+  //      removeExtra();
           down['37'] = true;
                     }
    }
@@ -126,6 +158,7 @@ var down = {};
            window.clearInterval(rightTime);
            window.clearInterval(upTime);
            moveDown();
+    //    removeExtra();
            down['40'] = true;
                      }
     }
@@ -136,12 +169,12 @@ var down = {};
             window.clearInterval(rightTime);
             window.clearInterval(downTime);
             moveUp();
+      //  removeExtra();
             down['38'] = true;
                       }
      }
 
  });
-
 
  addToSnake = function(){
    var count = 0;
@@ -154,8 +187,8 @@ var down = {};
          mutations.forEach(function(mutation) {
           if ($(".food").hasClass("hover") == true){
             $(".box").removeClass("food")
-            addFood();
             addTail();
+            addFood();
                       }
                     });
                   });
@@ -167,7 +200,7 @@ var down = {};
            }
 
   killSnake = function() {
-    var config = { attributes: true, childList: true, characterData: true };
+    var config = { attributes: true, childList: true, characterData: true, subtree:true };
 
     $(".right-border, .left-border, .top-border, .bottom-border").each(function () {
       var target = this;
@@ -185,6 +218,7 @@ var down = {};
 addFood = function(){
   var random = Math.floor(Math.random() * (900 - 1 + 1)) + 1;
   $('*[data="' + random + '"]').addClass("food")
+
 };
 
 };

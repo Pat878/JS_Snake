@@ -5,7 +5,7 @@ $(document).ready(function() {
   makebox();
   addSnake();
   moveSnake();
-  addBorder();
+  //addBorder();
   addFood();
   killSnake();
   addToSnake();
@@ -225,9 +225,8 @@ var down = {};
 }
 
 addFood = function(){
-  var random = Math.floor(Math.random() * (900 - 1 + 1)) + 1;
+  var random = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
   $('*[data="' + random + '"]').addClass("food")
-
 };
 
 };

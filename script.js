@@ -26,6 +26,8 @@ $(document).ready(function() {
     });
     };
 
+var previousSnake = null;
+
 /*function addBorder() {
   //find all of the border divs and add a border class to them
   $(".box").each(function(){

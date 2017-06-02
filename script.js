@@ -113,8 +113,7 @@ moveUp = function() {
 };
 
 addTail = function() {
-    snake.push(snake[snake.length - 1])
-console.log(snake)
+  snake.push(previousSnake)
   }
 
 var snake = [42]

@@ -8,7 +8,7 @@ $(document).ready(function() {
   makebox();
   addSnake();
   moveSnake();
-  //addBorder();
+  addBorder();
   addFood();
   killSnake();
   addToSnake();
@@ -31,23 +31,23 @@ $(document).ready(function() {
     });
     };
 
-/*function addBorder() {
+function addBorder() {
   //find all of the border divs and add a border class to them
   $(".box").each(function(){
 
-    if ($(this).attr('data') % 25 == 0) {
+    if ($(this).attr('data') % 18 == 0) {
       $(this).addClass("right-border")
     }
-    else if ($(this).attr('data') % 25 == 1) {
+    else if ($(this).attr('data') % 18 == 1) {
       $(this).addClass("left-border")
     }
-    else if ($(this).attr('data') < 25) {
+    else if ($(this).attr('data') < 18) {
       $(this).addClass("top-border")
     }
-    else if ($(this).attr('data') >= 877 ) {
+    else if ($(this).attr('data') >= 559 ) {
       $(this).addClass("bottom-border") }
       })
-} */
+}
 
 function addSnake () {
 
@@ -147,7 +147,6 @@ var down = {};
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveRight();
-          ();
           down['39'] = true;
 
                              }

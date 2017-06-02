@@ -131,24 +131,6 @@ $('*[data="' + snake[0] + '"]').addClass("hover");
 
 var down = {};
 
-removeExtra = function(){
-
-var array = [];
-
-  $(".hover").each(function() {
-      array.push($(this).attr("data"));
-  });
-
-var len = array.length
-var len2 = snake.length - 1
-var combo = len-len2
-
-  //for (var i=0;i<len2;i++){
-    //array.splice(0,i)
-    //$('*[data="' + (array[i]) + '"]').removeClass("hover");}
-
- }
-
   moveSnake = function() {
 
     $(document).keydown(function(event){

@@ -144,7 +144,7 @@ var down = {};
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveRight();
-          removeExtra();
+          ();
           down['39'] = true;
 
                              }
@@ -156,7 +156,6 @@ var down = {};
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveLeft();
-        removeExtra();
           down['37'] = true;
                     }
    }
@@ -167,7 +166,6 @@ var down = {};
            window.clearInterval(rightTime);
            window.clearInterval(upTime);
            moveDown();
-        removeExtra();
            down['40'] = true;
                      }
     }
@@ -178,7 +176,6 @@ var down = {};
             window.clearInterval(rightTime);
             window.clearInterval(downTime);
             moveUp();
-        removeExtra();
             down['38'] = true;
                       }
      }

@@ -88,9 +88,9 @@ moveDown = function() {
   down = {}
   downTime = setInterval(function(){ //snake += 25
     for (var i = 0; i <snake.length;i++){
-        snake[i] += 25
+        snake[i] += 18
   $('*[data="' + snake[i] + '"]').addClass("hover");
-  $('*[data="' + (snake[snake.length-1] - 25 * snake.length) + '"]').removeClass("hover");
+  $('*[data="' + (snake[snake.length-1] - 18 * snake.length) + '"]').removeClass("hover");
 
 
 } }, 150)
@@ -105,9 +105,9 @@ moveUp = function() {
   down = {}
   upTime = setInterval(function(){ //snake -= 25
 for (var i = 0; i <snake.length;i++){
-        snake[i] -= 25
+        snake[i] -= 18
   $('*[data="' + snake[i] + '"]').addClass("hover");
-  $('*[data="' + (snake[snake.length-1] + 25 * snake.length) + '"]').removeClass("hover");
+  $('*[data="' + (snake[snake.length-1] + 18 * snake.length) + '"]').removeClass("hover");
 } }, 150)
 
 };

@@ -57,7 +57,7 @@ moveRight = function() {
   lildown = false;
   down = {}
   rightTime = setInterval(function(){
-  
+
     $('*[data="' + (snake[0]+1) + '"]').addClass("hover")
     $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
     previousSnake = snake[snake.length-1]
@@ -73,12 +73,11 @@ moveLeft = function() {
   lildown = false;
   down = {}
   leftTime = setInterval(function(){ //snake -= 1
-    for (var i = 0; i <snake.length;i++){
-        snake[i] -= 1
-  $('*[data="' + snake[i] + '"]').addClass("hover");
-  $('*[data="' + (snake[snake.length-1]+snake.length ) + '"]').removeClass("hover");
-
-} }, 150)
+    $('*[data="' + (snake[0]-1) + '"]').addClass("hover");
+    $('*[data="' + snake[snake.length-1]  + '"]').removeClass("hover");
+    previousSnake = snake[snake.length-1]
+    updateSnakeNumbers(snake[0]-1)
+   }, 150)
 
 };
 
@@ -89,13 +88,12 @@ moveDown = function() {
   lildown = true;
   down = {}
   downTime = setInterval(function(){ //snake += 25
-    for (var i = 0; i <snake.length;i++){
-        snake[i] += 18
-  $('*[data="' + snake[i] + '"]').addClass("hover");
-  $('*[data="' + (snake[snake.length-1] - 18 * snake.length) + '"]').removeClass("hover");
+    $('*[data="' + (snake[0]+18) + '"]').addClass("hover");
+    $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
+    previousSnake = snake[snake.length-1]
+    updateSnakeNumbers(snake[0]+18)
 
-
-} }, 150)
+    }, 150)
 
 };
 
@@ -106,11 +104,11 @@ moveUp = function() {
   lildown = false;
   down = {}
   upTime = setInterval(function(){ //snake -= 25
-for (var i = 0; i <snake.length;i++){
-        snake[i] -= 18
-  $('*[data="' + snake[i] + '"]').addClass("hover");
-  $('*[data="' + (snake[snake.length-1] + 18 * snake.length) + '"]').removeClass("hover");
-} }, 150)
+    $('*[data="' + (snake[0]-18) + '"]').addClass("hover");
+      $('*[data="' + snake[snake.length-1]  + '"]').removeClass("hover");
+      previousSnake = snake[snake.length-1]
+      updateSnakeNumbers(snake[0]-18)
+     }, 150)
 
 };
 

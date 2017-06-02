@@ -11,6 +11,8 @@ $(document).ready(function() {
   addToSnake();
   });
 
+  var previousSnake = null;
+
   function makebox() {
 
     var size = 24;  //24
@@ -25,8 +27,6 @@ $(document).ready(function() {
       $(this).attr('data', (i+1));
     });
     };
-
-var previousSnake = null;
 
 /*function addBorder() {
   //find all of the border divs and add a border class to them
@@ -57,12 +57,12 @@ moveRight = function() {
   lildown = false;
   down = {}
   rightTime = setInterval(function(){
-  for (var i=0;i<snake.length;i++) {
-    snake[i]++
-$('*[data="' + snake[i] + '"]').addClass("hover")
-$('*[data="' + (snake[snake.length-1]-snake.length) + '"]').removeClass("hover");
-console.log(snake)
-} }, 150)
+  
+    $('*[data="' + (snake[0]+1) + '"]').addClass("hover")
+    $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
+    previousSnake = snake[snake.length-1]
+    updateSnakeNumbers(snake[0]+1)
+     }, 150)
 
 };
 

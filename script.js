@@ -1,6 +1,9 @@
 //In the moveSnake function I had to use code from the below link in order to ignore multiple keydown events.
 //https://stackoverflow.com/questions/9098901/how-to-disable-repetitive-keydown-in-jquery
 
+//I would not have been able to make this game work without the help of Michał Sałaciński:
+//https://stackoverflow.com/questions/44305879/why-don-t-my-array-values-reflect-what-i-see-on-the-screen
+
 $(document).ready(function() {
   makebox();
   addSnake();

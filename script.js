@@ -118,6 +118,15 @@ addTail = function() {
 
 var snake = [42]
 
+function updateSnakeNumbers(head){
+  var prevNum = head
+  snake = snake.map(n=>{
+    var tmpPrev = prevNum;
+    prevNum = n;
+    return tmpPrev
+  })
+}
+
 $('*[data="' + snake[0] + '"]').addClass("hover");
 
 var down = {};

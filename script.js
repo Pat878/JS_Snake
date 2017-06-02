@@ -11,21 +11,22 @@ $(document).ready(function() {
   addToSnake();
   });
 
-function makebox() {
-  var size = 30;  //24
-  var boxSize = 20; //12
-  for (i=1;i<=size*size;i++) {
-    $("#container").append("<div class='box'></div>");
-  };
-  $("#container").width(size*boxSize + "px");
-  $(".box").width(boxSize + "");
-  $(".box").height(boxSize + "px");
-  $(".box").each( function(i) {
-    $(this).attr('data', (i+1));
-  });
-  };
+  function makebox() {
 
-function addBorder() {
+    var size = 24;  //24
+    var boxSize = 12; //12
+    for (i=1;i<=size*size;i++) {
+      $("#container").append("<div class='box'></div>");
+    };
+    $("#container").width(size*boxSize + "px");
+    $(".box").width(boxSize + "");
+    $(".box").height(boxSize + "px");
+    $(".box").each( function(i) {
+      $(this).attr('data', (i+1));
+    });
+    };
+
+/*function addBorder() {
   //find all of the border divs and add a border class to them
   $(".box").each(function(){
 
@@ -41,26 +42,33 @@ function addBorder() {
     else if ($(this).attr('data') >= 877 ) {
       $(this).addClass("bottom-border") }
       })
-}
+} */
 
 function addSnake () {
 
-var rightTime, leftTime, downTime, upTime;
-
+var rightTime, leftTime, downTime, upTime, right, left, up, lildown;
 
 moveRight = function() {
+  right = true;
+  left= false;
+  up = false;
+  lildown = false;
   down = {}
   rightTime = setInterval(function(){
   for (var i=0;i<snake.length;i++) {
     snake[i]++
 $('*[data="' + snake[i] + '"]').addClass("hover")
 $('*[data="' + (snake[snake.length-1]-snake.length) + '"]').removeClass("hover");
-
+console.log(snake)
 } }, 150)
 
 };
 
 moveLeft = function() {
+  right = false;
+  left= true;
+  up = false;
+  lildown = false;
   down = {}
   leftTime = setInterval(function(){ //snake -= 1
     for (var i = 0; i <snake.length;i++){
@@ -73,6 +81,10 @@ moveLeft = function() {
 };
 
 moveDown = function() {
+  right = false;
+  left= false;
+  up = false;
+  lildown = true;
   down = {}
   downTime = setInterval(function(){ //snake += 25
     for (var i = 0; i <snake.length;i++){
@@ -86,6 +98,10 @@ moveDown = function() {
 };
 
 moveUp = function() {
+  right = false;
+  left= false;
+  up = true;
+  lildown = false;
   down = {}
   upTime = setInterval(function(){ //snake -= 25
 for (var i = 0; i <snake.length;i++){
@@ -96,10 +112,10 @@ for (var i = 0; i <snake.length;i++){
 
 };
 
-addTail = function(){
-  snake.splice(0,-1)
-      snake.unshift(snake[0])
-}
+addTail = function() {
+    snake.push(snake[snake.length - 1])
+console.log(snake)
+  }
 
 var snake = [42]
 
@@ -112,17 +128,18 @@ removeExtra = function(){
 var array = [];
 
   $(".hover").each(function() {
-      array.unshift($(this).attr("data"));
+      array.push($(this).attr("data"));
   });
 
 var len = array.length
-var len2 = snake.length
+var len2 = snake.length - 1
 var combo = len-len2
 
-for (var i=0;i<len;i++){
-    $('*[data="' + array[i] + '"]').removeClass("hover");
+  //for (var i=0;i<len2;i++){
+    //array.splice(0,i)
+    //$('*[data="' + (array[i]) + '"]').removeClass("hover");}
 
-}}
+ }
 
   moveSnake = function() {
 
@@ -130,14 +147,16 @@ for (var i=0;i<len;i++){
 
    var keycode = (event.keyCode ? event.keyCode : event.which);
 
+
    if(keycode == '39'){
         if (down['39'] == null) {
           window.clearInterval(leftTime);
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveRight();
-//          removeExtra();
+          removeExtra();
           down['39'] = true;
+
                              }
    }
 
@@ -147,7 +166,7 @@ for (var i=0;i<len;i++){
           window.clearInterval(downTime);
           window.clearInterval(upTime);
           moveLeft();
-  //      removeExtra();
+        removeExtra();
           down['37'] = true;
                     }
    }
@@ -158,7 +177,7 @@ for (var i=0;i<len;i++){
            window.clearInterval(rightTime);
            window.clearInterval(upTime);
            moveDown();
-    //    removeExtra();
+        removeExtra();
            down['40'] = true;
                      }
     }
@@ -169,7 +188,7 @@ for (var i=0;i<len;i++){
             window.clearInterval(rightTime);
             window.clearInterval(downTime);
             moveUp();
-      //  removeExtra();
+        removeExtra();
             down['38'] = true;
                       }
      }

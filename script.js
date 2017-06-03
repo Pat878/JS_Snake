@@ -163,8 +163,8 @@ var counts = [];
       var target = this;
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
+          window.location.reload(false);
           alert("Game over!")
-          window.location.reload(true);
         });
       });
 

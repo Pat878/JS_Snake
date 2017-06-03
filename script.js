@@ -111,7 +111,7 @@ var counts = [];
         } else {
           dir = ""
           alert("Game over!")
-          window.location.reload(true);
+          window.location.reload(false);
         }
     }
 
@@ -119,7 +119,7 @@ var counts = [];
     || $(".hover").hasClass("top-border") == true || $(".hover").hasClass("bottom-border") == true) {
       dir = ""
       alert("Game over!")
-      window.location.reload(true);
+      window.location.reload(false);
     }
 
 }, 150);

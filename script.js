@@ -18,8 +18,8 @@ $(document).ready(function() {
 
   function makebox() {
 
-    var size = 24;  //24
-    var boxSize = 12; //12
+    var size = 24;
+    var boxSize = 12; 
     for (i=1;i<=size*size;i++) {
       $("#container").append("<div class='box'></div>");
     };
@@ -103,8 +103,6 @@ else if (dir == "up") {
 }
 
 }, 150);
-
-
 
     $(document).keydown(function(event){
 

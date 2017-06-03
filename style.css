@@ -20,10 +20,6 @@
   background-color: blue;
 }
 
-.white {
-  background-color: white;
-}
-
 .right-border, .left-border, .top-border, .bottom-border {
   background: red;
   border: 2px red solid;

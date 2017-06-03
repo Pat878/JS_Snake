@@ -111,7 +111,7 @@ var counts = [];
             counts[snake[i]] = 1;
         } else {
           alert("Game over!")
-          window.location.reload(false);
+          window.location.reload(true);
         }
     }
 
@@ -164,7 +164,7 @@ var counts = [];
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           alert("Game over!")
-          window.location.reload(false);
+          window.location.reload(true);
         });
       });
 

@@ -11,7 +11,7 @@ $(document).ready(function() {
   moveSnake();
   addBorder();
   addFood();
-  killSnake();
+//  killSnake();
   addToSnake();
   });
 
@@ -115,6 +115,11 @@ var counts = [];
         }
     }
 
+    if ( $(".hover").hasClass("right-border") == true ) {
+      alert("Game over!")
+      window.location.reload(true);
+    }
+
 }, 150);
 
     $(document).keydown(function(event){
@@ -163,9 +168,9 @@ var counts = [];
       var target = this;
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-          window.location.reload(false);
           alert("Game over!")
-        });
+          window.location.reload(false);
+          });
       });
 
     observer.observe(target, config);

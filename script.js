@@ -52,68 +52,7 @@ function addBorder() {
 function addSnake () {
 
 var rightTime, leftTime, downTime, upTime, right, left, up, lildown;
-
-moveRight = function() {
-  right = true;
-  left= false;
-  up = false;
-  lildown = false;
-  down = {}
-  rightTime = setInterval(function(){
-
-    $('*[data="' + (snake[0]+1) + '"]').addClass("hover")
-    $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
-    previousSnake = snake[snake.length-1]
-    updateSnakeNumbers(snake[0]+1)
-     }, 150)
-
-};
-
-moveLeft = function() {
-  right = false;
-  left= true;
-  up = false;
-  lildown = false;
-  down = {}
-  leftTime = setInterval(function(){ //snake -= 1
-    $('*[data="' + (snake[0]-1) + '"]').addClass("hover");
-    $('*[data="' + snake[snake.length-1]  + '"]').removeClass("hover");
-    previousSnake = snake[snake.length-1]
-    updateSnakeNumbers(snake[0]-1)
-   }, 150)
-
-};
-
-moveDown = function() {
-  right = false;
-  left= false;
-  up = false;
-  lildown = true;
-  down = {}
-  downTime = setInterval(function(){ //snake += 25
-    $('*[data="' + (snake[0]+18) + '"]').addClass("hover");
-    $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
-    previousSnake = snake[snake.length-1]
-    updateSnakeNumbers(snake[0]+18)
-
-    }, 150)
-
-};
-
-moveUp = function() {
-  right = false;
-  left= false;
-  up = true;
-  lildown = false;
-  down = {}
-  upTime = setInterval(function(){ //snake -= 25
-    $('*[data="' + (snake[0]-18) + '"]').addClass("hover");
-      $('*[data="' + snake[snake.length-1]  + '"]').removeClass("hover");
-      previousSnake = snake[snake.length-1]
-      updateSnakeNumbers(snake[0]-18)
-     }, 150)
-
-};
+var dir = "right"
 
 addTail = function() {
   snake.push(previousSnake)
@@ -132,55 +71,54 @@ function updateSnakeNumbers(head){
 
 $('*[data="' + snake[0] + '"]').addClass("hover");
 
-var down = {};
 
-  moveSnake = function() {
+moveSnake = function() {
+
+move = setInterval(function(){
+if (dir == "right"){
+       $('*[data="' + (snake[0]+1) + '"]').addClass("hover")
+       $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
+       previousSnake = snake[snake.length-1]
+       updateSnakeNumbers(snake[0]+1) }
+
+else if (dir == "left"){
+  $('*[data="' + (snake[0]-1) + '"]').addClass("hover");
+  $('*[data="' + snake[snake.length-1]  + '"]').removeClass("hover");
+  previousSnake = snake[snake.length-1]
+  updateSnakeNumbers(snake[0]-1)
+}
+
+else if (dir == "down") {
+  $('*[data="' + (snake[0]+18) + '"]').addClass("hover");
+  $('*[data="' + snake[snake.length-1] + '"]').removeClass("hover");
+  previousSnake = snake[snake.length-1]
+  updateSnakeNumbers(snake[0]+18)
+}
+
+else if (dir == "up") {
+  $('*[data="' + (snake[0]-18) + '"]').addClass("hover");
+  $('*[data="' + snake[snake.length-1]  + '"]').removeClass("hover");
+  previousSnake = snake[snake.length-1]
+  updateSnakeNumbers(snake[0]-18)
+}
+
+}, 150);
+
+
 
     $(document).keydown(function(event){
 
-   var keycode = (event.keyCode ? event.keyCode : event.which);
+   if(event.which == '39'){
+     dir = "right";  }
 
+  else if(event.which == '37'){
+         dir = "left";  }
 
-   if(keycode == '39'){
-        if (down['39'] == null) {
-          window.clearInterval(leftTime);
-          window.clearInterval(downTime);
-          window.clearInterval(upTime);
-          moveRight();
-          down['39'] = true;
+   else if(event.which == '40'){
+          dir = "down";  }
 
-                             }
-   }
-
-  else if(keycode == '37'){
-        if (down['37'] == null) {
-          window.clearInterval(rightTime);
-          window.clearInterval(downTime);
-          window.clearInterval(upTime);
-          moveLeft();
-          down['37'] = true;
-                    }
-   }
-
-   else if(keycode == '40'){
-         if (down['40'] == null) {
-           window.clearInterval(leftTime);
-           window.clearInterval(rightTime);
-           window.clearInterval(upTime);
-           moveDown();
-           down['40'] = true;
-                     }
-    }
-
-    else if(keycode == '38'){
-          if (down['38'] == null) {
-            window.clearInterval(leftTime);
-            window.clearInterval(rightTime);
-            window.clearInterval(downTime);
-            moveUp();
-            down['38'] = true;
-                      }
-     }
+    else if(event.which == '38'){
+           dir = "up";    }
 
  });
 

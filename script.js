@@ -102,7 +102,7 @@ else if (dir == "up") {
   updateSnakeNumbers(snake[0]-18)
 }
 
-//The below code was taken from the following site:
+//The below code to find duplicate array values was taken from the following site:
 //https://www.thepolyglotdeveloper.com/2015/02/calculate-duplicates-exist-array-using-javascript/
 
 var counts = [];

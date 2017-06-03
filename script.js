@@ -150,7 +150,8 @@ else if (dir == "up") {
       var target = this;
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-          console.log("Game over!")
+          alert("Game over!")
+          window.location.reload(false);
         });
       });
 

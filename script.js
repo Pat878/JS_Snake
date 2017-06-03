@@ -162,21 +162,6 @@ var counts = [];
 
            }
 
-  killSnake = function() {
-    var config = { attributes: true, childList: true, characterData: true, subtree:true };
-
-    $(".right-border, .left-border, .top-border, .bottom-border").each(function () {
-      var target = this;
-      var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          alert("Game over!")
-          window.location.reload(false);
-          });
-      });
-
-    observer.observe(target, config);
-  });
-          }
 }
 
 addFood = function(){

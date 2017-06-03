@@ -4,7 +4,6 @@
 
 }
 
-
 #container {
   display: block;
   border: 2px black solid;
@@ -12,6 +11,7 @@
   font-size: 0;
   margin: 10px auto;
 }
+
 .hover {
   background-color: black;
 }
@@ -23,5 +23,4 @@
 .right-border, .left-border, .top-border, .bottom-border {
   background: red;
   border: 2px red solid;
-
 }

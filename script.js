@@ -115,7 +115,8 @@ var counts = [];
         }
     }
 
-    if ( $(".hover").hasClass("right-border") == true ) {
+    if ( $(".hover").hasClass("right-border") == true || $(".hover").hasClass("left-border") == true
+    || $(".hover").hasClass("top-border") == true || $(".hover").hasClass("bottom-border") == true) {
       alert("Game over!")
       window.location.reload(true);
     }

@@ -118,6 +118,10 @@ else if (dir == "up") {
     else if(event.which == '38'){
            dir = "up";    }
 
+snakeHit = function(){
+  
+}
+
  });
 
  addToSnake = function(){
@@ -166,7 +170,5 @@ addFood = function(){
   }
   else (  $('*[data="' + random + '"]').addClass("food") )
 };
-
-snakeHit = function(){}
 
 };

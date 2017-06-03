@@ -11,7 +11,6 @@ $(document).ready(function() {
   moveSnake();
   addBorder();
   addFood();
-  addToSnake();
   });
 
   var previousSnake = null;
@@ -122,6 +121,11 @@ var counts = [];
       window.location.reload(false);
     }
 
+    if ($(".food").hasClass("hover") == true){
+      $(".box").removeClass("food")
+      addTail();
+      addFood(); }
+
 }, 150);
 
     $(document).keydown(function(event){
@@ -141,35 +145,12 @@ var counts = [];
 
  });
 
- addToSnake = function(){
-
-     var config = { attributes: true, childList: true, characterData: true };
-
-     $(".box, .food").each(function () {
-       var target = this;
-       var observer = new MutationObserver(function(mutations) {
-         mutations.forEach(function(mutation) {
-          if ($(".food").hasClass("hover") == true){
-            $(".box").removeClass("food")
-            addTail();
-            addFood();
-                      }
-                    });
-                  });
-
-      observer.observe(target, config);
-
-   });
-
-           }
-
 }
 
 addFood = function(){
   var random = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
   if (random % 18 == 0 || random % 18 == 1 || random < 17) {
-    addFood();
-  }
+    addFood();  }
   else (  $('*[data="' + random + '"]').addClass("food") )
 };
 

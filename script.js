@@ -150,8 +150,8 @@ else if (dir == "up") {
       var target = this;
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-          alert("Game over!")
-          window.location.reload(false);
+        //  alert("Game over!")
+        //  window.location.reload(false);
         });
       });
 
@@ -162,7 +162,10 @@ else if (dir == "up") {
 
 addFood = function(){
   var random = Math.floor(Math.random() * (500 - 1 + 1)) + 1;
-  $('*[data="' + random + '"]').addClass("food")
+  if (random % 18 == 0 || random % 18 == 1 || random < 17) {
+    addFood();
+  }
+  else (  $('*[data="' + random + '"]').addClass("food") )
 };
 
 };

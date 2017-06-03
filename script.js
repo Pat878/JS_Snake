@@ -107,7 +107,7 @@ else if (dir == "up") {
     $(document).keydown(function(event){
 
    if(event.which == '39'){
-     dir = "right";  }
+        dir = "right";  }
 
   else if(event.which == '37'){
          dir = "left";  }
@@ -121,7 +121,6 @@ else if (dir == "up") {
  });
 
  addToSnake = function(){
-   var count = 0;
 
      var config = { attributes: true, childList: true, characterData: true };
 
@@ -167,5 +166,7 @@ addFood = function(){
   }
   else (  $('*[data="' + random + '"]').addClass("food") )
 };
+
+snakeHit = function(){}
 
 };

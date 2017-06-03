@@ -11,7 +11,6 @@ $(document).ready(function() {
   moveSnake();
   addBorder();
   addFood();
-//  killSnake();
   addToSnake();
   });
 

@@ -19,7 +19,7 @@ $(document).ready(function() {
   function makebox() {
 
     var size = 24;
-    var boxSize = 12; 
+    var boxSize = 12;
     for (i=1;i<=size*size;i++) {
       $("#container").append("<div class='box'></div>");
     };
@@ -51,7 +51,6 @@ function addBorder() {
 
 function addSnake () {
 
-var rightTime, leftTime, downTime, upTime, right, left, up, lildown;
 var dir = "right"
 
 addTail = function() {

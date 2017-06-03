@@ -109,7 +109,7 @@ var counts = [];
         if(counts[snake[i]] === undefined) {
             counts[snake[i]] = 1;
         } else {
-          dir = ""
+          $(".box").removeClass("hover")
           alert("Game over!")
           window.location.reload(false);
         }

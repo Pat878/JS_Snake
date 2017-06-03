@@ -102,25 +102,35 @@ else if (dir == "up") {
   updateSnakeNumbers(snake[0]-18)
 }
 
+//The below code was taken from the following site:
+//https://www.thepolyglotdeveloper.com/2015/02/calculate-duplicates-exist-array-using-javascript/
+
+var counts = [];
+    for(var i = 0; i <= snake.length; i++) {
+        if(counts[snake[i]] === undefined) {
+            counts[snake[i]] = 1;
+        } else {
+          alert("Game over!")
+          window.location.reload(false);
+        }
+    }
+
 }, 150);
 
     $(document).keydown(function(event){
 
    if(event.which == '39'){
-        dir = "right";  }
+        dir = "right"; }
 
   else if(event.which == '37'){
-         dir = "left";  }
+         dir = "left"; }
 
    else if(event.which == '40'){
-          dir = "down";  }
+          dir = "down"; }
 
     else if(event.which == '38'){
-           dir = "up";    }
+           dir = "up"; }
 
-snakeHit = function(){
-  
-}
 
  });
 
@@ -153,8 +163,8 @@ snakeHit = function(){
       var target = this;
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-        //  alert("Game over!")
-        //  window.location.reload(false);
+          alert("Game over!")
+          window.location.reload(false);
         });
       });
 
